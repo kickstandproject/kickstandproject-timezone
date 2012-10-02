@@ -1,45 +1,38 @@
 #
-# puppet-modules: The Kickstand Project
+# == Class: timezone::params
 #
-# Copyright (C) 2011, Polybeacon, Inc.
+# === Authors
 #
 # Paul Belanger <paul.belanger@polybeacon.com>
 #
-# See http://kickstand-project.org for more information about
-# the Kickstand project. Please do not directly contact any
-# of the maintainers of this project for assistance; the
-# project provides a web site, forums and IRC channels for
-# your use.
+# === Copyright
+#
+# Copyright (C) 2012, PolyBeacon, Inc.
 #
 # This program is free software, distributed under the terms
-# of the GNU General Public License Version 2. See the LICENSE
-# file at the top of the source tree.
+# of the Apache License, Version 2.0. See the LICENSE file at
+# the top of the source tree.
 #
 class timezone::params {
-    $packagename = $::operatingsystem ? {
-        default => 'tzdata',
-    }
+  $configfile = $::operatingsystem ? {
+    default => '/etc/timezone',
+  }
 
-    $configfile = $::operatingsystem ? {
-        default => '/etc/timezone',
-    }
+  $group = $::operatingsystem ? {
+    default => 'root',
+  }
 
-    $group = $::operatingsystem ? {
-        default => 'root',
-    }
+  $mode = $::operatingsystem ? {
+    default => '0644',
+  }
 
-    $mode = $::operatingsystem ? {
-        default => '0644',
-    }
+  $owner = $::operatingsystem ? {
+    default => 'root',
+  }
 
-    $owner = $::operatingsystem ? {
-        default => 'root',
-    }
-
-    $zone = $timezone_zoneinfo ? {
-        ''      => 'America/Toronto',
-        default => $timezone_zoneinfo,
-    }
+  $packagename = $::operatingsystem ? {
+    default => 'tzdata',
+  }
 }
 
-# vim:sw=4:ts=4:expandtab:textwidth=79
+# vim:sw=2:ts=2:expandtab:textwidth=79

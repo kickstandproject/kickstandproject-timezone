@@ -1,10 +1,5 @@
-# == Class: timezone::client
 #
-# This class manages the timezone client
-#
-# === Examples
-#
-#  class { 'timezone::client': }
+# == Class: timezone::client::install
 #
 # === Authors
 #
@@ -18,11 +13,10 @@
 # of the Apache License, Version 2.0. See the LICENSE file at
 # the top of the source tree.
 #
-class timezone::client(
-  zone  = 'America/Toronto',
-) {
-  include timezone::params
-  include timezone::client::init
+class timezone::client::install {
+  package { $timezone::params::packagename:
+    ensure  => present,
+  }
 }
 
 # vim:sw=2:ts=2:expandtab:textwidth=79
