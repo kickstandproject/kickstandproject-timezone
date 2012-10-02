@@ -16,7 +16,7 @@
 class timezone::client::config {
   file { $timezone::params::configfile:
     ensure  => file,
-    content => template('timezone/client/timezone.erb'),
+    content => template('timezone/etc/timezone.erb'),
     require => Class['timezone::client::install'],
     notify  => Exec["${name}-set-timezone"],
   }
