@@ -19,7 +19,7 @@
 # the top of the source tree.
 #
 class timezone::client(
-  zone  = 'America/Toronto',
+  $zone = 'America/Toronto',
 ) {
   include timezone::params
   include timezone::client::init
